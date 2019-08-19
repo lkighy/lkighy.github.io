@@ -29,3 +29,12 @@ tags: [rust, WebAssembly, 翻译]
 ## 为本书做贡献
 
 这本书是开源的！找个拼写错误？或我们忽略了什么？向我们[**发送拉取请求吧**](https://github.com/rustwasm/book)。
+
+- 下一篇: [**为什么是 Rust 和 WebAssembly？**](/rust/webassembly/2019/07/08/为什么是Rust和WebAssmbly/)
+- 上一篇: -
+
+---
+- via: [https://rustwasm.github.io/book/introduction.html](https://rustwasm.github.io/book/introduction.html)
+- 作者: -
+- 译者: lkighy
+- 校对: -
