@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-08-19T02:44:29-07:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">青丘梦</title><subtitle>一个以兴趣为动力的自学者.</subtitle><author><name>lkighy</name></author><entry><title type="html">Rust 🦀 和 WebAssembly 🕸</title><link href="http://localhost:4000/rust/webassembly/2019/07/07/rust-%E5%92%8C-WebAsembly/" rel="alternate" type="text/html" title="Rust 🦀 和 WebAssembly 🕸" /><published>2019-07-07T00:00:00-07:00</published><updated>2019-07-07T00:00:00-07:00</updated><id>http://localhost:4000/rust/webassembly/2019/07/07/rust-%E5%92%8C-WebAsembly</id><content type="html" xml:base="http://localhost:4000/rust/webassembly/2019/07/07/rust-%E5%92%8C-WebAsembly/">&lt;p&gt;这本书描述了 &lt;a href=&quot;https://www.rust-lang.org/&quot;&gt;rust&lt;/a&gt; 和 &lt;a href=&quot;https://webassembly.org/&quot;&gt;WebAssembly&lt;/a&gt; 的使用。&lt;/p&gt;
+
+&lt;h2 id=&quot;这本书适合什么人&quot;&gt;这本书适合什么人？&lt;/h2&gt;
+
+&lt;p&gt;本书适用于任何有兴趣将 rust 编译为 WebAssembly 的人，以便在 web 上获得快速、可靠的代码。您应该了解一些 Rust，并熟悉 JavaScript 和 CSS。您不需要成为其中一个的专家。&lt;/p&gt;
+
+&lt;p&gt;不知道 Rust？ 首先从&lt;a href=&quot;https://doc.rust-lang.org/book/&quot;&gt;&lt;em&gt;rust 编程语言开始&lt;/em&gt;&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;不懂 JavaScript,HTML 或 CSS？ &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Learn&quot;&gt;在MDN上了解他们&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;如何阅读本书&quot;&gt;如何阅读本书&lt;/h2&gt;
+
+&lt;p&gt;您应该先阅读&lt;a href=&quot;./2.为什么是Rust和WebAssmbly.md&quot;&gt;使用 Rust 和 WebAssembly 的动机&lt;/a&gt;，并熟悉其&lt;a href=&quot;https://rustwasm.github.io/docs/book/background-and-concepts.html&quot;&gt;背景和概念&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;本教程应头阅读到尾。您应该：自己编写、编译和运行教程代码。如果您之前没有使用过 Rust 和 web Assembly。请从先了解它们。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://rustwasm.github.io/docs/book/reference/index.html&quot;&gt;参考部分&lt;/a&gt;可以按任何顺序进行阅读。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;💡 提示: 您可以通过点击页面顶部的 🔍 图标 或按 s 键来搜索本书。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;为本书做贡献&quot;&gt;为本书做贡献&lt;/h2&gt;
+
+&lt;p&gt;这本书是开源的！找个拼写错误？或我们忽略了什么？向我们&lt;a href=&quot;https://github.com/rustwasm/book&quot;&gt;&lt;strong&gt;发送拉取请求吧&lt;/strong&gt;&lt;/a&gt;。&lt;/p&gt;</content><author><name>lkighy</name></author><category term="rust" /><category term="WebAssembly" /><category term="翻译" /><summary type="html">这本书描述了 rust 和 WebAssembly 的使用。 这本书适合什么人？ 本书适用于任何有兴趣将 rust 编译为 WebAssembly 的人，以便在 web 上获得快速、可靠的代码。您应该了解一些 Rust，并熟悉 JavaScript 和 CSS。您不需要成为其中一个的专家。 不知道 Rust？ 首先从rust 编程语言开始。 不懂 JavaScript,HTML 或 CSS？ 在MDN上了解他们。 如何阅读本书 您应该先阅读使用 Rust 和 WebAssembly 的动机，并熟悉其背景和概念。 本教程应头阅读到尾。您应该：自己编写、编译和运行教程代码。如果您之前没有使用过 Rust 和 web Assembly。请从先了解它们。 参考部分可以按任何顺序进行阅读。 💡 提示: 您可以通过点击页面顶部的 🔍 图标 或按 s 键来搜索本书。 为本书做贡献 这本书是开源的！找个拼写错误？或我们忽略了什么？向我们发送拉取请求吧。</summary></entry><entry><title type="html">为什么是 Rust 和 WebAssembly？</title><link href="http://localhost:4000/rust/webassembly/2017/07/08/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AFRust%E5%92%8CWebAssmbly/" rel="alternate" type="text/html" title="为什么是 Rust 和 WebAssembly？" /><published>2017-07-08T00:00:00-07:00</published><updated>2017-07-08T00:00:00-07:00</updated><id>http://localhost:4000/rust/webassembly/2017/07/08/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AFRust%E5%92%8CWebAssmbly</id><content type="html" xml:base="http://localhost:4000/rust/webassembly/2017/07/08/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AFRust%E5%92%8CWebAssmbly/">&lt;h2 id=&quot;具有高级的人机工程学ergonomics和低级控制control&quot;&gt;具有高级的人机工程学(Ergonomics)和低级控制(Control)&lt;/h2&gt;
+
+&lt;p&gt;JavaScript Web应用程序很难获得并保持可靠的性能。JavaScript 的动态类型系统和垃圾回收机制对保持可靠的性能没有任何帮助。如果您不小心徘徊在 JIT 的快乐道路上，看似微不足道的代码更改可能会导致严重的性能下降。&lt;/p&gt;
+
+&lt;p&gt;Rust 为程序员提供了低级控制和可靠的性能。它不受 JavaScript 的非确定性垃圾回收的影响。程序员可以控制间接、单拟画和内存布局。&lt;/p&gt;
+
+&lt;h2 id=&quot;小巧的-wasm&quot;&gt;小巧的 &lt;code class=&quot;highlighter-rouge&quot;&gt;.wasm&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;代码的多少非常重要，因为必须通过网络下载 &lt;code class=&quot;highlighter-rouge&quot;&gt;.wasm&lt;/code&gt;。Rust 缺少一个运行时小巧的 &lt;code class=&quot;highlighter-rouge&quot;&gt;.wasm&lt;/code&gt;，因为没有囊肿的垃圾回收器，您只需要为实际使用的功能支付相应的容量（代码的多少）。&lt;/p&gt;
+
+&lt;h2 id=&quot;不需要全部从写&quot;&gt;不需要全部从写&lt;/h2&gt;
+
+&lt;p&gt;不需要丢弃现有的代码库。您可以首先将对性能敏感的 JavaScript 函数移植到 Rust，以获得最好的收益。如果你愿意，你甚至可以在那里停下来。&lt;/p&gt;
+
+&lt;h2 id=&quot;与他人的愉快合作&quot;&gt;与他人的愉快合作&lt;/h2&gt;
+
+&lt;p&gt;Rust 和 WebAssembly 与现有的 JavaScript 工具集成。它支持 ECMAScript 模块，您可以继续使用您喜欢的工具，如 npm, webpack 和 Greenkeeper。&lt;/p&gt;
+
+&lt;h2 id=&quot;你期待的设施&quot;&gt;你期待的设施&lt;/h2&gt;
+
+&lt;p&gt;Rust 拥有开发人员所期待的现代化设施：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;强大的包管理工具 &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt;,&lt;/li&gt;
+  &lt;li&gt;富有表现了(和零成本) 的抽象,&lt;/li&gt;
+  &lt;li&gt;和一个热情的社区!😊&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>lkighy</name></author><category term="rust" /><category term="WebAssembly" /><category term="翻译" /><summary type="html">具有高级的人机工程学(Ergonomics)和低级控制(Control) JavaScript Web应用程序很难获得并保持可靠的性能。JavaScript 的动态类型系统和垃圾回收机制对保持可靠的性能没有任何帮助。如果您不小心徘徊在 JIT 的快乐道路上，看似微不足道的代码更改可能会导致严重的性能下降。 Rust 为程序员提供了低级控制和可靠的性能。它不受 JavaScript 的非确定性垃圾回收的影响。程序员可以控制间接、单拟画和内存布局。 小巧的 .wasm 代码的多少非常重要，因为必须通过网络下载 .wasm。Rust 缺少一个运行时小巧的 .wasm，因为没有囊肿的垃圾回收器，您只需要为实际使用的功能支付相应的容量（代码的多少）。 不需要全部从写 不需要丢弃现有的代码库。您可以首先将对性能敏感的 JavaScript 函数移植到 Rust，以获得最好的收益。如果你愿意，你甚至可以在那里停下来。 与他人的愉快合作 Rust 和 WebAssembly 与现有的 JavaScript 工具集成。它支持 ECMAScript 模块，您可以继续使用您喜欢的工具，如 npm, webpack 和 Greenkeeper。 你期待的设施 Rust 拥有开发人员所期待的现代化设施： 强大的包管理工具 cargo, 富有表现了(和零成本) 的抽象, 和一个热情的社区!😊</summary></entry></feed>

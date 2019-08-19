@@ -1,26 +1,18 @@
----
-# The 404 page
-# © 2017-2019 Cotes Chung
-# MIT License
-layout: page
-title:
-  en: "404: Page not found"
-  zh: "404 找不到 >_< !!"
-
-permalink: /404.html
-
-redirect_from:  # Same as site.blocklist
-- /norobots/
-- /assets/
-- /tabs/
-- /categories/
-- /tags/
-- /posts/
-
-dynamic_title: true
----
-
-<div class="lead">
-  <p>抱歉，我们放错了该URL，或者它指向了不存在的内容。</p>
-  <p><a href="{{ site.baseurl }}/">返回主页</a> 尝试再次查找, 或在<a href="{{ site.baseurl }}/tabs/archives">归档页面</a>中搜索.</p>
-</div>
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8;"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="robots" content="all" />
+  <meta name="robots" content="index,follow"/>
+  <link rel="stylesheet" type="text/css" href="https://qzone.qq.com/gy/404/style/404style.css">
+</head>
+<body>
+  <script type="text/plain" src="http://www.qq.com/404/search_children.js"
+          charset="utf-8" homePageUrl="/"
+          homePageName="回到我的主页">
+  </script>
+  <script src="https://qzone.qq.com/gy/404/data.js" charset="utf-8"></script>
+  <script src="https://qzone.qq.com/gy/404/page.js" charset="utf-8"></script>
+</body>
+</html>
