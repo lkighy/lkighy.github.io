@@ -1,0 +1,26 @@
+---
+# The 404 page
+# © 2017-2019 Cotes Chung
+# MIT License
+layout: page
+title:
+  en: "404: Page not found"
+  zh: "404 找不到 >_< !!"
+
+permalink: /404.html
+
+redirect_from:  # Same as site.blocklist
+- /norobots/
+- /assets/
+- /tabs/
+- /categories/
+- /tags/
+- /posts/
+
+dynamic_title: true
+---
+
+<div class="lead">
+  <p>抱歉，我们放错了该URL，或者它指向了不存在的内容。</p>
+  <p><a href="{{ site.baseurl }}/">返回主页</a> 尝试再次查找, 或在<a href="{{ site.baseurl }}/tabs/archives">归档页面</a>中搜索.</p>
+</div>
