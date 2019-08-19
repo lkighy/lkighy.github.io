@@ -1,10 +1,11 @@
 ---
 title: 什么是 WebAssembly?
-description: WebAssembly(wasm) 是一种简单的机器模型和可执行格式，具有广泛的规范，它设计为便携、紧凑，并以原生速度或接近原生速度执行。
-categories: 
+description: WebAssembly(wasm) 是一种简单的机器模型和可执行格式，具有广泛的规范，它设计为便携、紧凑，并以原生速度或接近原生速度执行.
+categories:
   - rust/WebAssembly
 tags: [rust, WebAssembly, 翻译]
 ---
+
 
 WebAssembly(wasm) 是一种简单的机器模型和可执行格式，具有广泛的规范[(extensive specification)](https://webassembly.github.io/spec/)，它设计为便携、紧凑，并以原生速度或接近原生速度执行。
 
@@ -44,7 +45,7 @@ WebAssembly 有一个非常简单的[内存模型](https://webassembly.github.io
 虽然它目前在 JavaScript 和 Web 社区中收到了广泛的关注,但 wasm 并没有对其主机环境做出臆断.因此推测 wasm 在未来将在各种环境中使用 "轻便可移植"的可能性是存在的.然而到目前为止, wasm 主要与 JavaScript(JS) 关联,JavaScript 有很多特点(包括 Web 和 Node.js).
 
 - 下一篇:[**教程:康威的生命游戏**](/)
-- 上一篇:[**为什么是Rust 和 WebAssembly**](https://lkighy.github.io/rust/webassembly/2017/07/08/为什么是Rust和WebAssmbly/)
+- 上一篇:[**为什么是Rust 和 WebAssembly**](https://lkighy.github.io/rust/webassembly/2019/07/08/为什么是Rust和WebAssmbly/)
 
 ---
 - via: [https://rustwasm.github.io/book/what-is-webassembly.html](https://rustwasm.github.io/book/what-is-webassembly.html)
