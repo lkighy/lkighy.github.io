@@ -44,10 +44,12 @@ WebAssembly 有一个非常简单的[内存模型](https://webassembly.github.io
 
 虽然它目前在 JavaScript 和 Web 社区中收到了广泛的关注,但 wasm 并没有对其主机环境做出臆断.因此推测 wasm 在未来将在各种环境中使用 "轻便可移植"的可能性是存在的.然而到目前为止, wasm 主要与 JavaScript(JS) 关联,JavaScript 有很多特点(包括 Web 和 Node.js).
 
-- 下一篇:[**教程:康威的生命游戏**](/)
-- 上一篇:[**为什么是Rust 和 WebAssembly**](https://lkighy.github.io/rust/webassembly/2019/07/08/为什么是Rust和WebAssmbly/)
+- 下一篇:[**教程-康威的生命游戏**](/rust/webassembly/2019/07/10/教程-康威的生命游戏/)
+- 上一篇:[**为什么是Rust 和 WebAssembly**](/rust/webassembly/2019/07/08/为什么是Rust和WebAssmbly/)
+- 如果您还读过该系列文章,建议您从[**Rust 🦀 和 WebAssembly 🕸**](/rust/webassembly/2019/07/07/rust-和-WebAsembly/)开始阅读
 
 ---
+
 - via: [https://rustwasm.github.io/book/what-is-webassembly.html](https://rustwasm.github.io/book/what-is-webassembly.html)
 - 作者: -
 - 译者: lkighy
