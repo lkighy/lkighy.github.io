@@ -291,7 +291,7 @@ npm run start
 <details>
 <summary>回答</summary>
 
-该 `greet` 功能的新版本 `wasm-game-of-life/src/lib.rs` :
+  该 `greet` 功能的新版本 `wasm-game-of-life/src/lib.rs` :
 
   ```rust
   #![allow(unused_variables)]
@@ -303,11 +303,11 @@ npm run start
   }
   ```
 
-新调用 `greet` 的 `wasm-game-of-life/www/index.js`:
+  新调用 `greet` 的 `wasm-game-of-life/www/index.js`:
 
-```hljs
-wasm.greet("Your Name");
-```
+  ```hljs
+  wasm.greet("Your Name");
+  ```
 
 </details>
 
