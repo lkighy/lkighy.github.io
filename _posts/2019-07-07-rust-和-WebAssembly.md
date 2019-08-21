@@ -35,6 +35,5 @@ tags: [rust, WebAssembly, 翻译]
 
 ---
 - via: [https://rustwasm.github.io/book/introduction.html](https://rustwasm.github.io/book/introduction.html)
-- 作者: -
 - 译者: lkighy
 - 校对: -

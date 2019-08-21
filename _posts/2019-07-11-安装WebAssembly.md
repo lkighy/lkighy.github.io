@@ -43,11 +43,10 @@ npm install npm@latest -g
 
 - 下一篇:[**Hello,World!**](/rust/webassembly/2019/07/12/Hello,World/)
 - 上一篇:[**教程:康威的生命游戏**](/rust/webassembly/2019/07/10/教程-康威的生命游戏/)
-- 如果您还读过该系列文章,建议您从[**Rust 🦀 和 WebAssembly 🕸**](/rust/webassembly/2019/07/07/rust-和-WebAsembly/)开始阅读
+- 如果您还读过该系列文章,建议您从[**Rust 🦀 和 WebAssembly 🕸**](/rust/webassembly/2019/07/07/rust-和-WebAssembly/)开始阅读
 
 ---
 
 - via: [https://rustwasm.github.io/book/game-of-life/setup.html](https://rustwasm.github.io/book/game-of-life/setup.html)
-- 作者: -
 - 译者: lkighy
 - 校对: -

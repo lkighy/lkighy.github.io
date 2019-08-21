@@ -280,7 +280,7 @@ npm run start
 
 在浏览器导航到 http://localhost:8080/ 您将看到一条警告信息:
 
-![hello-world](../images/hello-world.png)
+![hello-world](https://rustwasm.github.io/book/images/game-of-life/hello-world.png)
 
 无论何时进行更改并希望他们反映在 [http://localhost:8080/](http://localhost:8080/), 只需要在 `wasm-game-of-life` 目录中运行 `wasm-pack build` 命令。
 
@@ -293,16 +293,15 @@ npm run start
 
 该 `greet` 功能的新版本 `wasm-game-of-life/src/lib.rs` :
 
-```rust
-
-#![allow(unused_variables)]
-fn main() {
-#[wasm_bindgen]
-pub fn greet(name: &str) {
-    alert(&format!("Hello, {}!", name));
-}
-}
-```
+  ```rust
+  #![allow(unused_variables)]
+  fn main() {
+    #[wasm_bindgen]
+    pub fn greet(name: &str) {
+        alert(&format!("Hello, {}!", name));
+    }
+  }
+  ```
 
 新调用 `greet` 的 `wasm-game-of-life/www/index.js`:
 
@@ -314,11 +313,10 @@ wasm.greet("Your Name");
 
 - 下一篇:[**康威生命游戏的游戏规则**](/)
 - 上一篇:[**安装 WebAssembly**](/rust/webassembly/2019/07/11/安装WebAssembly/)
-- 如果您还读过该系列文章,建议您从[**Rust 🦀 和 WebAssembly 🕸**](/rust/webassembly/2019/07/07/rust-和-WebAsembly/)开始阅读
+- 如果您还读过该系列文章,建议您从[**Rust 🦀 和 WebAssembly 🕸**](/rust/webassembly/2019/07/07/rust-和-WebAssembly/)开始阅读
 
 ---
 
-- via: [https://rustwasm.github.io/book/game-of-life/introduction.html](https://rustwasm.github.io/book/game-of-life/introduction.html)
-- 作者: -
+- via: [https://rustwasm.github.io/book/game-of-life/hello-world.html](https://rustwasm.github.io/book/game-of-life/hello-world.html)
 - 译者: lkighy
 - 校对: -
