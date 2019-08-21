@@ -120,9 +120,9 @@ pkg/
 
 `.wasm` 文件时由 Rust 编译器从 Rust 源码生成的 WebAssembly 二进制文件。它将所有所有 Rust 函数和数据编译成的 `wasm` 版本。例如，它具有 "greet" 功能。
 
-### `wasm-game-of-life/pkg/wasm-game-of-life.js
+### `wasm-game-of-life/pkg/wasm-game-of-life.js`
 
-`.js` 文件是由 `wasm-bindgen` 生成的，包含 JavaScript 粘合剂，用于将 DOM 和 JavaScript 函数导入 Rust 并向 WebAssembly 函数公开一个很好的 APU 到 JavaScript。 例如，有一个 JavaScript `greet` 函数，它包装从 WebAssembly 模块导出的 `greet` 函数，现在这种粘合剂并没有太多作用，但是当我们开始在 wasm 和 JavaScript 之间来回传递更多值时，它将有助于这些值传递到边界。
+`.js` 文件是由 `wasm-bindgen` 生成的，包含 JavaScript 粘合剂，用于将 DOM 和 JavaScript 函数导入 Rust 并向 WebAssembly 函数公开一个很好的 API 到 JavaScript。 例如，有一个 JavaScript `greet` 函数，它包装从 WebAssembly 模块导出的 `greet` 函数，现在这个粘合剂并没有太多作用，但是当我们开始在 wasm 和 JavaScript 之间来回传递更多有趣的值时，它将有助于这些值的传递。
 
 ```javaScript
 import * as wasm from './wasm_game_of_life_bg';
@@ -132,12 +132,11 @@ import * as wasm from './wasm_game_of_life_bg';
 export function greet() {
     return wasm.greet();
 }
-
 ```
 
 ### `wasm-game-of-life/pkg/wasm_game_of_life.d.ts`
 
-`.d.ts` 文件包含 JavaScript glue 的 TypeScript 类型声明，如果您使用的是 TypeScript，则可以选中对 WebAssembly
+`.d.ts` 文件包含 JavaScript 粘合剂的 TypeScript 类型声明，如果您使用的是 TypeScript，则可以选中对 WebAssembly
 函数类型的调用，并且您的 IDE 可以提供自动完成和建议！ 如果您不使用 TypeScript，则可以忽略此文件。
 
 ```hljs
@@ -289,29 +288,29 @@ npm run start
 - 修改 `wasm-game-of-life/src/lib.rs` 中的greet 函数，取一个 `name: &str` 参数，自定义一个 alerted 消息，并将你的名字传递给来自 `wasm-game-of life/www/index.js`。使用 `wasm-pack` 重新构建 `.wasm` 二进制文件，然后在 Web 浏览器中刷新 http://localhost:8080/ ,您应该看到自定义问候语！
 
 <details>
-<summary>回答</summary>
+<summary>答案</summary>
 
-  该 `greet` 功能的新版本 `wasm-game-of-life/src/lib.rs` :
+该 `greet` 功能的新版本 `wasm-game-of-life/src/lib.rs`:
 
-  ```rust
-  #![allow(unused_variables)]
-  fn main() {
-    #[wasm_bindgen]
-    pub fn greet(name: &str) {
-        alert(&format!("Hello, {}!", name));
-    }
+```rust
+#![allow(unused_variables)]
+fn main() {
+  #[wasm_bindgen]
+  pub fn greet(name: &str) {
+      alert(&format!("Hello, {}!", name));
   }
-  ```
+}
+```
 
   新调用 `greet` 的 `wasm-game-of-life/www/index.js`:
 
-  ```hljs
-  wasm.greet("Your Name");
-  ```
+```js
+wasm.greet("Your Name");
+```
 
 </details>
 
-- 下一篇:[**康威生命游戏的游戏规则**](/)
+- 下一篇:[**康威生命游戏的游戏规则**](/rust/webassembly/2019/07/13/康威生命游戏规则/)
 - 上一篇:[**安装 WebAssembly**](/rust/webassembly/2019/07/11/安装WebAssembly/)
 - 如果您还读过该系列文章,建议您从[**Rust 🦀 和 WebAssembly 🕸**](/rust/webassembly/2019/07/07/rust-和-WebAssembly/)开始阅读
 
