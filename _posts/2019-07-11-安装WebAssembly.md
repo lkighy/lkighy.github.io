@@ -41,9 +41,9 @@ cargo install cargo-generate
 npm install npm@latest -g
 ```
 
+- [**目录**](/rust/webassembly/2019/08/22/WebAssembly之书目录)
 - 下一篇:[**Hello,World!**](/rust/webassembly/2019/07/12/Hello,World/)
 - 上一篇:[**教程:康威的生命游戏**](/rust/webassembly/2019/07/10/教程-康威的生命游戏/)
-- 如果您还读过该系列文章,建议您从[**Rust 🦀 和 WebAssembly 🕸**](/rust/webassembly/2019/07/07/rust-和-WebAssembly/)开始阅读
 
 ---
 

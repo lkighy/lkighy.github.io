@@ -310,9 +310,9 @@ wasm.greet("Your Name");
 
 </details>
 
+- [**目录**](/rust/webassembly/2019/08/22/WebAssembly之书目录)
 - 下一篇:[**康威生命游戏的游戏规则**](/rust/webassembly/2019/07/13/康威生命游戏规则/)
 - 上一篇:[**安装 WebAssembly**](/rust/webassembly/2019/07/11/安装WebAssembly/)
-- 如果您还读过该系列文章,建议您从[**Rust 🦀 和 WebAssembly 🕸**](/rust/webassembly/2019/07/07/rust-和-WebAssembly/)开始阅读
 
 ---
 

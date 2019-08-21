@@ -28,15 +28,15 @@ Rust 和 WebAssembly 与现有的 JavaScript 工具集成。它支持 ECMAScript
 
 Rust 拥有开发人员所期待的现代化设施：
 
-+ 强大的包管理工具 `cargo`,
-+ 富有表现了(和零成本) 的抽象,
-+ 和一个热情的社区!😊
+- 强大的包管理工具 `cargo`,
+- 富有表现了(和零成本) 的抽象,
+- 和一个热情的社区!😊
 
 ---
 
+- [**目录**](/rust/webassembly/2019/08/22/WebAssembly之书目录)
 - 下一篇: [**什么是 WebAssembly?**](/rust/webassembly/2019/07/09/什么是WebAssembly/)
 - 上一篇: [**Rust 🦀 和 WebAssembly 🕸**](/rust/webassembly/2019/07/07/rust-和-WebAssembly/)
-- 如果您还读过该系列文章,建议您从[**Rust 🦀 和 WebAssembly 🕸**](/rust/webassembly/2019/07/07/rust-和-WebAssembly/)开始阅读
 
 ---
 - via: [https://rustwasm.github.io/book/why-rust-and-webassembly.html](https://rustwasm.github.io/book/why-rust-and-webassembly.html)
