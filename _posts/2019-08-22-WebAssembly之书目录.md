@@ -20,22 +20,22 @@ tags: [rust, WebAssembly, 翻译, 目录]
 2. [Hello,World!](/rust/webassembly/2019/07/12/Hello,World/)
 3. [康威生命游戏规则](/rust/webassembly/2019/07/13/康威生命游戏规则/)
 4. [实现康威生命游戏](/rust/webassembly/2019/08/18/实现康威生命游戏/)
-5. [测试康威生命游戏](JavaScript:;)
-6. [Debugging](JavaScript:;)
-7. [增加交互性](JavaScript:;)
-8. [Time Profiling](JavaScript:;)
-9. [缩小 .wasm 的大小](JavaScript:;)
-10. [发布到 npm](JavaScript:;)
+5. 测试康威生命游戏
+6. Debugging
+7. 增加交互性
+8. Time Profiling
+9. 缩小 .wasm 的大小
+10. 发布到 npm
 
-### [5. 参考](JavaScript:;)
+### 5. 参考
 
-1. [你应该知道的 Crates](JavaScript:;)
-2. [你应该知道的 Tools](JavaScript:;)
-3. [项目模板](JavaScript:;)
-4. [Debugging](JavaScript:;)
-5. [Time Profiling](JavaScript:;)
-6. [缩小的 .wasm 的大小](JavaScript:;)
-7. [与 JavaScript 交互](JavaScript:;)
-8. [使用 WebAssembly 可以使用哪些 Crates 进行现成的 Work](JavaScript:;)
-9. [如何将 webAssembly 支持添加到通用包](JavaScript:;)
-10. [将 Rust 和 WebAssembly 部署到生产环境中](JavaScript:;)
+1. 你应该知道的 Crates
+2. 你应该知道的 Tools
+3. 项目模板
+4. Debugging
+5. Time Profiling
+6. 缩小的 .wasm 的大小
+7. 与 JavaScript 交互
+8. 使用 WebAssembly 可以使用哪些 Crates 进行现成的 Work
+9. 如何将 webAssembly 支持添加到通用包
+10. 将 Rust 和 WebAssembly 部署到生产环境中
