@@ -266,7 +266,7 @@ sidebar:
   #  - always  expand for all pages automatically
   #  - hide    expand only when click on the sidebar toggle icon.
   #  - remove  Totally remove sidebar including sidebar toggle.
-  display: post
+  display: hide
   #display: always
   #display: hide
   #display: remove
@@ -382,8 +382,8 @@ han: false
 
 # Disqus
 disqus:
-  enable: false
-  shortname:
+  enable: true
+  shortname: lkighy
   count: true
   # hide comments (visitors need to click to load the comments)
   # count need to be false when hide is true
@@ -464,7 +464,7 @@ gitalk:
 #google_site_verification:
 
 # Google Analytics
-#google_analytics:
+google_analytics: UA-146146679-1
 
 # Yandex Webmaster tools verification setting
 # See: https://webmaster.yandex.ru/
