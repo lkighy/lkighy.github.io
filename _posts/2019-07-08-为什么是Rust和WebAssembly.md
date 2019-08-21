@@ -35,7 +35,7 @@ Rust 拥有开发人员所期待的现代化设施：
 ---
 
 - 下一篇: [**什么是 WebAssembly?**](/rust/webassembly/2019/07/09/什么是WebAssembly/)
-- 上一篇: [**Rust 🦀 和 WebAssembly 🕸**](rust/webassembly/2019/07/07/rust-%E5%92%8C-WebAsembly/)
+- 上一篇: [**Rust 🦀 和 WebAssembly 🕸**](/rust/webassembly/2019/07/07/rust-和-WebAssembly/)
 - 如果您还读过该系列文章,建议您从[**Rust 🦀 和 WebAssembly 🕸**](/rust/webassembly/2019/07/07/rust-和-WebAssembly/)开始阅读
 
 ---
