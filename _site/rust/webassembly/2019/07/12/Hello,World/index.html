@@ -1,0 +1,1170 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="rust,WebAssembly,翻译," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="青丘梦" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本节将向您展示如何构建和运行您的第一个 Rust WebAssembly 程序：一个警告 &quot;Hello, World!&quot; 的网页.">
+<meta name="keywords" content="rust, WebAssembly, 翻译">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello,World">
+<meta property="og:url" content="http://localhost:4000/rust/webassembly/2019/07/12/Hello,World/">
+<meta property="og:site_name" content="青丘梦">
+<meta property="og:description" content="本节将向您展示如何构建和运行您的第一个 Rust WebAssembly 程序：一个警告 &quot;Hello, World!&quot; 的网页.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://rustwasm.github.io/book/images/game-of-life/hello-world.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hello,World">
+<meta name="twitter:description" content="本节将向您展示如何构建和运行您的第一个 Rust WebAssembly 程序：一个警告 &quot;Hello, World!&quot; 的网页.">
+<meta name="twitter:image" content="https://rustwasm.github.io/book/images/game-of-life/hello-world.png">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://localhost:4000/"/>
+
+
+
+
+
+  <title>Hello,World | 青丘梦</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-146146679-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">青丘梦</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/rust/webassembly/2019/07/12/Hello,World/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lkighy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/profile.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青丘梦">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+          
+          
+            Hello,World
+          
+        </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-12T00:00:00-07:00">
+                2019-07-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/rust%2FWebAssembly" itemprop="url" rel="index">
+                    <span itemprop="name">rust/WebAssembly</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    本节将向您展示如何构建和运行您的第一个 Rust WebAssembly 程序：一个警告 "Hello, World!" 的网页.
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <p>开始之前,请确保以按照<a href="/rust/webassembly/2019/07/11/安装WebAssembly/">安装说明</a>进行操作.</p>
+
+<h2 id="克隆项目模板">克隆项目模板</h2>
+
+<p>这份项目模板预先配置好了默认值,因此您可以快速构建、集成、打包 web 代码.</p>
+
+<p>使用以下命令克隆项目模板：</p>
+
+<pre><code class="language-hljs">cargo generate --git https://github.com/rustwasm/wasm-pack-template
+</code></pre>
+
+<p>这因该会提示您输入新项目的名称.我们将使用 <code class="highlighter-rouge">wasm-game-of-life</code>.</p>
+
+<pre><code class="language-hljs">wasm-game-of-life
+</code></pre>
+
+<h2 id="项目结构">项目结构</h2>
+
+<p>进入 <code class="highlighter-rouge">wasm-game-of-life</code> 项目</p>
+
+<pre><code class="language-hljs">cd wasm-game-of-life
+</code></pre>
+
+<p>让我们看看他的内容</p>
+
+<pre><code class="language-hljs">wasm-game-of-life/
+├── Cargo.toml
+├── LICENSE_APACHE
+├── LICENSE_MIT
+├── README.md
+└── src
+    ├── lib.rs
+    └── utils.rs
+</code></pre>
+
+<p>让我们详细介绍这些文件</p>
+
+<h3 id="wasm-game-of-lifecargotoml"><code class="highlighter-rouge">wasm-game-of-life/Cargo.toml</code></h3>
+
+<p><code class="highlighter-rouge">Cargo.toml</code> 文件指定货物的依赖关系和元数据,Rust 的包管理器和构建工具.这个预先配置了一个 <code class="highlighter-rouge">wasm-game-of-life</code> 依赖项,我们将在后面深入介绍一些可选的依赖项,并且正确初始化 <code class="highlighter-rouge">crate-type</code> 以生成 <code class="highlighter-rouge">.wasm</code> 库.</p>
+
+<h3 id="wasm-game-of-lifesrclibrs"><code class="highlighter-rouge">wasm-game-of-life/src/lib.rs</code></h3>
+
+<p><code class="highlighter-rouge">src/lib.rs</code> 文件是我们要编译为 WebAssembly 的 Rust 包的根.它使用 <code class="highlighter-rouge">wasm-bindgen</code> 与 JavaScript 进行交互.它导入 <code class="highlighter-rouge">window.alert</code> JavaScript 函数,并导出 <code class="highlighter-rouge">greet</code> Rust 函数,该函数显示警告问候消息.</p>
+
+<p><em>注: 下面的代码复制进项目,如果报错,则需要在 <code class="highlighter-rouge">Cargo.lock</code> 下 <code class="highlighter-rouge">dependencies</code> 添加 <code class="highlighter-rouge">cfg-if = "0.1.9"</code> 表示导入<code class="highlighter-rouge">cfg-if</code> 包</em></p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27</pre></td><td class="code"><pre class="highlight"><code><span class="k">extern</span> <span class="n">crate</span> <span class="n">cfg_if</span><span class="p">;</span>
+<span class="k">extern</span> <span class="n">crate</span> <span class="n">wasm_bindgen</span><span class="p">;</span>
+
+<span class="k">mod</span> <span class="n">utils</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nn">cfg_if</span><span class="p">::</span><span class="n">cfg_if</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">wasm_bindgen</span><span class="p">::</span><span class="nn">prelude</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
+
+<span class="nd">cfg_if!</span> <span class="p">{</span>
+    <span class="c">// When the `wee_alloc` feature is enabled, use `wee_alloc` as the global</span>
+    <span class="c">// allocator.</span>
+    <span class="k">if</span> #<span class="p">[</span><span class="nf">cfg</span><span class="p">(</span><span class="n">feature</span> <span class="o">=</span> <span class="s">"wee_alloc"</span><span class="p">)]</span> <span class="p">{</span>
+        <span class="k">extern</span> <span class="n">crate</span> <span class="n">wee_alloc</span><span class="p">;</span>
+        <span class="nd">#[global_allocator]</span>
+        <span class="k">static</span> <span class="n">ALLOC</span><span class="p">:</span> <span class="nn">wee_alloc</span><span class="p">::</span><span class="n">WeeAlloc</span> <span class="o">=</span> <span class="nn">wee_alloc</span><span class="p">::</span><span class="nn">WeeAlloc</span><span class="p">::</span><span class="n">INIT</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nd">#[wasm_bindgen]</span>
+<span class="k">extern</span> <span class="p">{</span>
+    <span class="k">fn</span> <span class="nf">alert</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="o">&amp;</span><span class="nb">str</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nd">#[wasm_bindgen]</span>
+<span class="k">pub</span> <span class="k">fn</span> <span class="nf">greet</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">alert</span><span class="p">(</span><span class="s">"Hello, wasm-game-of-life!"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<h3 id="wasm-game-of-lifesrcutilsrs"><code class="highlighter-rouge">wasm-game-of-life/src/utils.rs</code></h3>
+
+<p><code class="highlighter-rouge">src/utils.rs</code> 模块提供了一些常用的实用程序,可以更轻松的将 Rust 编译成 WebAssembly.我们将在本教程后面更详细地介绍这些使用程序,例如当我们调试 wasm 代码是,但是现在我们可以忽略此文件.</p>
+
+<h2 id="构建项目">构建项目</h2>
+
+<p>我们使用 <code class="highlighter-rouge">wasm-pack</code> 进行以下构建步骤：</p>
+
+<ul>
+  <li>确保我们有 Rust 1.30 或更高版本,并且通过 rustup 安装了 <code class="highlighter-rouge">wasm32-unknown-unknown</code> ,</li>
+  <li>通过 <code class="highlighter-rouge">cargo</code> 将我们的 Rust 源代码编译成 WebAssembly <code class="highlighter-rouge">.wasm</code> 项目.</li>
+  <li>使用 <code class="highlighter-rouge">wasm-bindgen</code> 生成 Javascript API 以使用我们的 Rust 生成的 WebAssembly.</li>
+</ul>
+
+<p>要完成这些,请在项目目录运行此命令:</p>
+
+<pre><code class="language-hljs">wasm-pack build
+</code></pre>
+
+<p>构建完成后,我们可以在 <code class="highlighter-rouge">pkg</code> 目录中找到它的文件,它应该包含以下内容：</p>
+
+<pre><code class="language-hljs">pkg/
+├── package.json
+├── README.md
+├── wasm_game_of_life_bg.wasm
+├── wasm_game_of_life.d.ts
+└── wasm_game_of_life.js
+</code></pre>
+
+<p><code class="highlighter-rouge">README.md</code> 文件是从主项目复制的,但其他文件是新创建的.</p>
+
+<h3 id="wasm-game-of-lifepkgwasm_game_of_life_bgwasm"><code class="highlighter-rouge">wasm-game-of-life/pkg/wasm_game_of_life_bg.wasm</code></h3>
+
+<p><code class="highlighter-rouge">.wasm</code> 文件时由 Rust 编译器从 Rust 源码生成的 WebAssembly 二进制文件.它将所有所有 Rust 函数和数据编译成的 <code class="highlighter-rouge">wasm</code> 版本.例如,它具有 “greet” 功能.</p>
+
+<h3 id="wasm-game-of-lifepkgwasm-game-of-lifejs"><code class="highlighter-rouge">wasm-game-of-life/pkg/wasm-game-of-life.js</code></h3>
+
+<p><code class="highlighter-rouge">.js</code> 文件是由 <code class="highlighter-rouge">wasm-bindgen</code> 生成的,包含 JavaScript 粘合剂,用于将 DOM 和 JavaScript 函数导入 Rust 并向 WebAssembly 函数公开一个很好的 API 到 JavaScript. 例如,有一个 JavaScript <code class="highlighter-rouge">greet</code> 函数,它包装从 WebAssembly 模块导出的 <code class="highlighter-rouge">greet</code> 函数,现在这个粘合剂并没有太多作用,但是当我们开始在 wasm 和 JavaScript 之间来回传递更多有趣的值时,它将有助于这些值的传递.</p>
+
+<pre><code class="language-javaScript">import * as wasm from './wasm_game_of_life_bg';
+
+// ...
+
+export function greet() {
+    return wasm.greet();
+}
+</code></pre>
+
+<h3 id="wasm-game-of-lifepkgwasm_game_of_lifedts"><code class="highlighter-rouge">wasm-game-of-life/pkg/wasm_game_of_life.d.ts</code></h3>
+
+<p><code class="highlighter-rouge">.d.ts</code> 文件包含 JavaScript 粘合剂的 TypeScript 类型声明,如果您使用的是 TypeScript,则可以选中对 WebAssembly
+函数类型的调用,并且您的 IDE 可以提供自动完成和建议！ 如果您不使用 TypeScript,则可以忽略此文件.</p>
+
+<pre><code class="language-hljs">export function greet(): void;
+</code></pre>
+
+<h3 id="wasm-game-of-lifepkgpackagejson"><code class="highlighter-rouge">wasm-game-of-life/pkg/package.json</code></h3>
+
+<p><a href="https://docs.npmjs.com/files/package.json"><code class="highlighter-rouge">package.json</code> 文件包含有关生成的 JavaScript 和 WebAssembly 包的元数据.</a> npm 和 JavaScript 捆绑包使用它来确定包、包名、版本和一堆其他东西之间的依赖关系.它帮助我们与 JavaScript 工具集成,并允许我们将我们的包发布到 npm.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16</pre></td><td class="code"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wasm-game-of-life"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Your Name &lt;your.email@example.com&gt;"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"license"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"repository"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"wasm_game_of_life_bg.wasm"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"wasm_game_of_life.d.ts"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wasm_game_of_life.js"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"types"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wasm_game_of_life.d.ts"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></tbody></table></div></div>
+
+<h2 id="将它放入网页">将它放入网页</h2>
+
+<p>要获取我们的 <code class="highlighter-rouge">wasm-game-of-life</code> 包并在网页中使用它,我们使用 <a href="https://github.com/rustwasm/create-wasm-app"><code class="highlighter-rouge">create-wasm-app</code> JavaScript 项目模板</a>.</p>
+
+<p>在 <code class="highlighter-rouge">wasm-game-of-life</code> 目录中运行此命令:</p>
+
+<pre><code class="language-hljs">npm init wasm-app www
+</code></pre>
+
+<p>这是我们新的 <code class="highlighter-rouge">wasm-game-of-life/www</code> 子目录包含的内容:</p>
+
+<pre><code class="language-hljs">wasm-game-of-life/www/
+├── bootstrap.js
+├── index.html
+├── index.js
+├── LICENSE-APACHE
+├── LICENSE-MIT
+├── package.json
+├── README.md
+└── webpack.config.js
+</code></pre>
+
+<p>再一次,让我们仔细看看其中的一些文件.</p>
+
+<h3 id="wasm-game-of-lifewwwpackagejson"><code class="highlighter-rouge">wasm-game-of-life/www/package.json</code></h3>
+
+<p>这个 <code class="highlighter-rouge">package.json</code> 预先配置了 <code class="highlighter-rouge">webpack</code> 和 <code class="highlighter-rouge">webpack-dev-server</code> 依赖项,以及对 <code class="highlighter-rouge">hello-wasm-pack</code> 的依赖,<code class="highlighter-rouge">hello-wasm-pack</code> 是已发布到 npm 的初始 <code class="highlighter-rouge">wasm-pack-template</code> 包的一个版本.</p>
+
+<h3 id="wasm-game-of-lifewwwwebpackconfigjs"><code class="highlighter-rouge">wasm-game-of-life/www/webpack.config.js</code></h3>
+
+<p>此文件配置 webpack 及器本低开发服务器.他是预配置的,您根本不需要调整它已使用 webpack 以及本低开发服务器正常工作.</p>
+
+<h3 id="wasm-game-of-lifewwwindexhtml"><code class="highlighter-rouge">wasm-game-of-life/www/index.html</code></h3>
+
+<p>这是网页的根 HTML 文件.它除了加载 bootstrap.js 之外没什么用处,它是 index.js 的一个非常薄弱的包装器.</p>
+
+<pre><code class="language-HTML">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Hello wasm-pack!&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;script src="./bootstrap.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h3 id="wasm-game-of-lifewwwindexjs"><code class="highlighter-rouge">wasm-game-of-life/www/index.js</code></h3>
+
+<p><code class="highlighter-rouge">index.js</code> 是我们网页 JavaScript 的主要入口点.它导入了 <code class="highlighter-rouge">hello-wasm-pack</code> npm 包,包博涵默认的 <code class="highlighter-rouge">wasm-pack-template</code> 编译 WebAssembly 和 JavaScript 的粘合剂,然后调用 <code class="highlighter-rouge">hello-wasm-pack</code> 的 greet 函数.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3</pre></td><td class="code"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">wasm</span> <span class="k">from</span> <span class="s2">"hello-wasm-pack"</span><span class="p">;</span>
+
+<span class="nx">wasm</span><span class="p">.</span><span class="nx">greet</span><span class="p">();</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<h2 id="安装依赖项">安装依赖项</h2>
+
+<p>首先,通过在 <code class="highlighter-rouge">wasm-game-of-life/www</code> 子目录中运行 <code class="highlighter-rouge">npm install</code> 来确保安装本地开发服务器及其依赖项:</p>
+
+<pre><code class="language-hljs">npm install
+</code></pre>
+
+<p>此命令只需要运行一次,并将安装 <code class="highlighter-rouge">webpack</code> JavaScript bundler 及其开发服务器.</p>
+
+<blockquote>
+  <p>注意, 使用 Rust 和 WebAssembly 不需要 webpack, 它只是我们为方便起见而选择的 bundler 和开发服务器,Parcel 和 Rollup 还应该支持将 WebAssembly 导入为 ECMAscript 模块.如果您愿意,也可在没有捆绑器的情况下使用 Rust 和 WebAssembly!</p>
+</blockquote>
+
+<h2 id="在-www-中使用-我们本地的-wasm-game-of-life-包">在 <code class="highlighter-rouge">www</code> 中使用 我们本地的 <code class="highlighter-rouge">wasm-game-of-life</code> 包</h2>
+
+<p>我们希望使用本地的 <code class="highlighter-rouge">wasm-game-of-life</code> 软件包,而不是使用来自 npm 的 <code class="highlighter-rouge">hello-wasm-pack</code> 软件包.浙江使我们能够逐步发展我们的 wasm-game-of-life` 计划.</p>
+
+<p>打开 <code class="highlighter-rouge">wasm-game-of-life/www/package.json</code> 并编辑 <code class="highlighter-rouge">"dependencies"</code> 以包含 <code class="highlighter-rouge">"wasm-game-of-life":"file:../pkg</code> 条目:</p>
+
+<pre><code class="language-javaScript">    // ...
+    "dependencies": {
+        "wasm-game-of-life":"file:../pkg", // add this line!
+        // ...
+    }
+</code></pre>
+
+<p>接下来,修改 <code class="highlighter-rouge">wasm-game-of-life/www/index.js</code> 以导入 <code class="highlighter-rouge">wasm-game-of-life</code> 而不是 <code class="highlighter-rouge">hello-wasm-pack</code> 包:</p>
+
+<pre><code class="language-javaScript">import * as wasm from "wasm-game-of-life";
+
+wasm.greet();
+</code></pre>
+
+<p>由我们声明一个新的依赖项,我们需要安装它：</p>
+
+<pre><code class="language-hljs">npm install
+</code></pre>
+
+<p>我们的网页现在已准备好在本地访问了！</p>
+
+<h2 id="本地服务">本地服务</h2>
+
+<p>接下来,打开开发服务器的新终端.在新终端运行服务器让它在后台运行,并且不会阻止我们在此起见运行去其他命令.在新终端中,从 <code class="highlighter-rouge">wasm-game-of-life/www</code> 目录中运行此命令:</p>
+
+<pre><code class="language-hljs">npm run start
+</code></pre>
+
+<p>在浏览器导航到 <a href="http://localhost:8080/">http://localhost:8080/</a> 您将看到一条警告信息:</p>
+
+<p><img src="https://rustwasm.github.io/book/images/game-of-life/hello-world.png" alt="hello-world" /></p>
+
+<p>无论何时进行更改并希望他们反映在 <a href="http://localhost:8080/">http://localhost:8080/</a>, 只需要在 <code class="highlighter-rouge">wasm-game-of-life</code> 目录中运行 <code class="highlighter-rouge">wasm-pack build</code> 命令.</p>
+
+<h2 id="练习">练习</h2>
+
+<ul>
+  <li>修改 <code class="highlighter-rouge">wasm-game-of-life/src/lib.rs</code> 中的greet 函数,取一个 <code class="highlighter-rouge">name: &amp;str</code> 参数,自定义一个 alerted 消息,并将你的名字传递给来自 <code class="highlighter-rouge">wasm-game-of life/www/index.js</code>.使用 <code class="highlighter-rouge">wasm-pack</code> 重新构建 <code class="highlighter-rouge">.wasm</code> 二进制文件,然后在 Web 浏览器中刷新 <a href="http://localhost:8080/">http://localhost:8080/</a> ,您应该看到自定义问候语！</li>
+</ul>
+
+<details>
+<summary>答案</summary>
+
+该 `greet` 功能的新版本 `wasm-game-of-life/src/lib.rs`:
+
+```rust
+#![allow(unused_variables)]
+fn main() {
+  #[wasm_bindgen]
+  pub fn greet(name: &amp;str) {
+      alert(&amp;format!("Hello, {}!", name));
+  }
+}
+```
+
+  新调用 `greet` 的 `wasm-game-of-life/www/index.js`:
+
+```js
+wasm.greet("Your Name");
+```
+
+</details>
+
+<ul>
+  <li><a href="/rust/webassembly/2019/08/22/WebAssembly之书目录"><strong>目录</strong></a></li>
+  <li>下一篇:<a href="/rust/webassembly/2019/07/13/康威生命游戏规则/"><strong>康威生命游戏的游戏规则</strong></a></li>
+  <li>上一篇:<a href="/rust/webassembly/2019/07/11/安装WebAssembly/"><strong>安装 WebAssembly</strong></a></li>
+</ul>
+
+<hr />
+
+<ul>
+  <li>via: <a href="https://rustwasm.github.io/book/game-of-life/hello-world.html">https://rustwasm.github.io/book/game-of-life/hello-world.html</a></li>
+  <li>译者: lkighy</li>
+  <li>校对: -</li>
+</ul>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/rust" rel="tag"># rust</a>
+          
+            
+            <a href="/tag/#/WebAssembly" rel="tag"># WebAssembly</a>
+          
+            
+            <a href="/tag/#/%E7%BF%BB%E8%AF%91" rel="tag"># 翻译</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/rust/webassembly/2019/07/13/%E5%BA%B7%E5%A8%81%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F%E8%A7%84%E5%88%99/" rel="next" title="康威生命游戏规则">
+                <i class="fa fa-chevron-left"></i> 康威生命游戏规则
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/rust/webassembly/2019/07/11/%E5%AE%89%E8%A3%85WebAssembly/" rel="prev" title="安装 WebAssembly">
+                安装 WebAssembly <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NjIxMS8yMjcyMg=="></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/profile.jpg"
+               alt="lkighy" />
+          <p class="site-author-name" itemprop="name">lkighy</p>
+           
+              <p class="site-description motion-element" itemprop="description">一个以兴趣为动力的自学者.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-2"> <a class="nav-link" href="#克隆项目模板"> <span class="nav-number">1</span> <span class="nav-text">克隆项目模板</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#项目结构"> <span class="nav-number">2</span> <span class="nav-text">项目结构</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#wasm-game-of-lifecargotoml"> <span class="nav-number">2.1</span> <span class="nav-text">wasm-game-of-life/Cargo.toml</code</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#wasm-game-of-lifesrclibrs"> <span class="nav-number">2.2</span> <span class="nav-text">wasm-game-of-life/src/lib.rs</code</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#wasm-game-of-lifesrcutilsrs"> <span class="nav-number">2.3</span> <span class="nav-text">wasm-game-of-life/src/utils.rs</code</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#构建项目"> <span class="nav-number">3</span> <span class="nav-text">构建项目</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#wasm-game-of-lifepkgwasm_game_of_life_bgwasm"> <span class="nav-number">3.1</span> <span class="nav-text">wasm-game-of-life/pkg/wasm_game_of_life_bg.wasm</code</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#wasm-game-of-lifepkgwasm-game-of-lifejs"> <span class="nav-number">3.2</span> <span class="nav-text">wasm-game-of-life/pkg/wasm-game-of-life.js</code</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#wasm-game-of-lifepkgwasm_game_of_lifedts"> <span class="nav-number">3.3</span> <span class="nav-text">wasm-game-of-life/pkg/wasm_game_of_life.d.ts</code</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#wasm-game-of-lifepkgpackagejson"> <span class="nav-number">3.4</span> <span class="nav-text">wasm-game-of-life/pkg/package.json</code</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#将它放入网页"> <span class="nav-number">4</span> <span class="nav-text">将它放入网页</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#wasm-game-of-lifewwwpackagejson"> <span class="nav-number">4.1</span> <span class="nav-text">wasm-game-of-life/www/package.json</code</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#wasm-game-of-lifewwwwebpackconfigjs"> <span class="nav-number">4.2</span> <span class="nav-text">wasm-game-of-life/www/webpack.config.js</code</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#wasm-game-of-lifewwwindexhtml"> <span class="nav-number">4.3</span> <span class="nav-text">wasm-game-of-life/www/index.html</code</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#wasm-game-of-lifewwwindexjs"> <span class="nav-number">4.4</span> <span class="nav-text">wasm-game-of-life/www/index.js</code</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#安装依赖项"> <span class="nav-number">5</span> <span class="nav-text">安装依赖项</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#在-www-中使用-我们本地的-wasm-game-of-life-包"> <span class="nav-number">6</span> <span class="nav-text">在 www 中使用 我们本地的 wasm-game-of-life 包</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#本地服务"> <span class="nav-number">7</span> <span class="nav-text">本地服务</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#练习"> <span class="nav-number">8</span> <span class="nav-text">练习</span> </a> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lkighy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://jekyllrb.com">Jekyll</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/simpleyyt/jekyll-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+    
+      <script type="text/javascript">
+        (function(d, s) {
+          var j, e = d.getElementsByTagName(s)[0];
+          if (typeof LivereTower === 'function') { return; }
+          j = d.createElement(s);
+          j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+          j.async = true;
+          e.parentNode.insertBefore(j, e);
+        })(document, 'script');
+      </script>
+    
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
