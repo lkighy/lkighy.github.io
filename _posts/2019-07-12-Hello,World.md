@@ -289,8 +289,7 @@ npm run start
 
 - 修改 `wasm-game-of-life/src/lib.rs` 中的greet 函数,取一个 `name: &str` 参数,自定义一个 alerted 消息,并将你的名字传递给来自 `wasm-game-of life/www/index.js`.使用 `wasm-pack` 重新构建 `.wasm` 二进制文件,然后在 Web 浏览器中刷新 [http://localhost:8080/](http://localhost:8080/) ,您应该看到自定义问候语！
 
-<details>
-<summary>答案</summary>
+## 答案
 
 该 `greet` 功能的新版本 `wasm-game-of-life/src/lib.rs`:
 
@@ -309,8 +308,6 @@ fn main() {
 ```js
 wasm.greet("Your Name");
 ```
-
-</details>
 
 - [**目录**](/rust/webassembly/2019/08/22/WebAssembly之书目录)
 - 下一篇:[**康威生命游戏的游戏规则**](/rust/webassembly/2019/07/13/康威生命游戏规则/)
